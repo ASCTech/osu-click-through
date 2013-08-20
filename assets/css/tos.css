@@ -1,0 +1,21 @@
+/*
+ * tos.css
+ * 	styles for the terms of service click-through agreement
+ */
+
+body {
+	font-family: 'proximanova',arial,helvetica,sans-serif;
+	background-color: #F2F3ED;
+	margin: 0;
+	padding: 0;
+}
+
+#page {
+	width: 70%;
+	margin: 0 auto;
+}
+
+#header {
+	background: transparent url('../img/osu-logo.png') no-repeat center center;
+	height: 150px;
+}

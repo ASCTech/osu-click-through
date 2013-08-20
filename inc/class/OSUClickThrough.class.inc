@@ -9,10 +9,10 @@ class OSUClickThrough {
 		// actions
 		if( is_admin() ) {
 			add_action( 'admin_init', array( $this, 'admin_process_post' ) );
+			add_action( 'admin_init', array( $this, 'check_user_agreement' ) );	
 			add_action( 'network_admin_menu', array( $this, 'add_menus' ) );
 		}
 		add_action( 'muplugins_loaded', array( $this, 'create_options' ) );
-		add_action( 'init', array( $this, 'check_user_agreement' ) );	
 	}
 	
 	public function create_options() {
@@ -37,6 +37,15 @@ class OSUClickThrough {
 		
 		if ($user_has_agreed === '' ) {
 			// no value exists for user agreement need to display form before proceeding to WordPress
+			$options = get_site_option( 'osu_click_through_options' );
+			$agreement_text = $options['agreement_text'];
+			
+			$tos_css = WP_CONTENT_URL . '/mu-plugins/osu-click-through/assets/css/tos.css';
+			
+			// render form
+			include( WP_CONTENT_DIR . '/mu-plugins/osu-click-through/inc/view/click-through-agreement.view.inc' );
+		
+			exit();
 		}
 	}
 	
@@ -63,6 +72,20 @@ class OSUClickThrough {
 		
 			wp_redirect( add_query_arg( 'updated', 'true', network_admin_url( 'settings.php?page=osu-click-through' ) ) );
 			exit();
+		}
+		
+		if ( isset( $_POST['osu_terms_of_service'] ) ) {
+			check_admin_referer( 'osu_terms_of_service_agreement' );
+			
+			if ( isset( $_POST['osu_terms_of_service']['agree'] ) ) {
+				$current_user = wp_get_current_user();
+				
+				update_user_meta( $current_user->ID, 'osu_click_through_agreement', '1' );
+				
+				$wp_http_referer = $_POST['_wp_http_referer'];
+				wp_redirect( $wp_http_referer );
+				exit();
+			}
 		}
 	}
 	

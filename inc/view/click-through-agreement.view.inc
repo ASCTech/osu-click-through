@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Terms of Service | u.osu.edu</title>
+<link rel="stylesheet" href="https://www.osu.edu/assets/fonts/webfonts.css">
+<link rel="stylesheet" href="<?php echo $tos_css; ?>">
+</head>
+<body>
+<div id="page">
+	<div id="header">
+		
+	</div>
+	<div id="main">
+		<?php echo $agreement_text; ?>
+		<form method="post">
+			<?php wp_nonce_field( 'osu_terms_of_service_agreement' ); ?>
+			
+			<label for="osu_terms_of_service_agreement">
+			<input type="checkbox" name="osu_terms_of_service[agree]">
+			I agree to the Terms of Service.</label>
+			
+			<?php submit_button( 'Submit' ); ?>
+		</form>
+	</div>
+	<div id="footer">
+		
+	</div>
+</div>
+</body>
+</html>
