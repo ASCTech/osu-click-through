@@ -120,6 +120,8 @@ class OSUClickThrough {
 				'agreementtext',
 				array(
 					'textarea_name' => 'osu_click_through_options[agreement_text]',
+					'media_buttons' => FALSE,
+					'teeny' => TRUE,
 				)
 			);
 		?>
