@@ -31,7 +31,7 @@ class OSUClickThrough {
 			
 			add_site_option( 'osu_click_through_options', $options );
 		}
-	}
+	} // end create_options
 	
 	public function check_user_agreement() {
 		$current_user = wp_get_current_user();
@@ -51,11 +51,11 @@ class OSUClickThrough {
 		
 			exit();
 		}
-	}
+	} // end check_user_agreement
 	
 	public function add_menus() {
 		add_submenu_page( 'settings.php', 'OSU Click Through Agreement', 'OSU Click Through', 'manage_network_options', 'osu-click-through', array( $this, 'options_page') );
-	}
+	} // end add_menus
 	
 	public function admin_process_post() {
 		if ( isset( $_POST['osu_click_through_options'] ) && current_user_can( 'manage_network_options' ) ) {
@@ -91,7 +91,7 @@ class OSUClickThrough {
 				exit();
 			}
 		}
-	}
+	} // end admin_process_post
 	
 	public function options_page() {
 		// check for appropriate access
@@ -101,38 +101,13 @@ class OSUClickThrough {
 		// get options
 		$options = get_site_option( 'osu_click_through_options' );
 		$agreement_text = $options['agreement_text'];
-?>
-<div class="wrap">
-<?php screen_icon( 'options-general' ); ?>
-<h2>OSU Click Through Agreement</h2>
-<?php if ( isset( $_GET['updated'] ) ) : ?>
-<div id="message" class="updated"><p><?php _e( 'Options saved.' ) ?></p></div>
-<?php endif; ?>
-<form method="post">
-	<?php wp_nonce_field( 'osu_click_through_options' ); ?>
-	<table class="form-table">
-	<tr valign="top">
-		<th scope="row"><label for="agreement_text"><?php _e( 'Agreement Text' ) ?></label></th>
-		<td>
-		<?php
-			wp_editor(
-				$agreement_text,
-				'agreementtext',
-				array(
-					'textarea_name' => 'osu_click_through_options[agreement_text]',
-					'media_buttons' => FALSE,
-					'teeny' => TRUE,
-				)
-			);
-		?>
-		</td>
-	</tr>
-	</table>
 		
-	<?php submit_button(); ?>
-</form>
-</div>
-<?php
+		// render page
+		include( OSU_CLICK_THROUGH_DIR . '/inc/view/options-page.view.inc' );
+		
 	} // end options_page
 	
+	private function purge_agreement_usermeta() {
+		// TODO: purge all osu_click_through_agreement options from wp_usermeta
+	} // end purge_agreement_usermeta
 }
