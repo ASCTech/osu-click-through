@@ -21,8 +21,12 @@ class OSUClickThrough {
 		
 		if( $options === FALSE ) {
 			// options do not yet exist, create options
+			
+			// grab default agreement text (hacky at the moment)
+			include( WP_CONTENT_DIR . "/mu-plugins/osu-click-through/inc/misc/default-agreement-text.inc" );
+			
 			$options = array(
-				'agreement_text' => '',
+				'agreement_text' => $default_agreement_text,
 			);
 			
 			add_site_option( 'osu_click_through_options', $options );

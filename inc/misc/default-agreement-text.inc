@@ -1,0 +1,21 @@
+<?php
+$default_agreement_text = '<h1>Terms of Service</h1>
+U.OSU.EDU is a service that provides personal web space (known as “u.osu.edu” or u.osu) to Ohio State faculty, staff, and students to support their professional and educational activities at the Ohio State University.  This Service is provided to you free you charge, contingent upon your acceptance of these Terms and Conditions.   Your use of the Service is voluntary.  You must agree to follow acceptable usage responsibilities which may be updated from time to time, and you must accept responsibility to preserve the security and confidentiality of information that you post, share, or access before an account in U.OSU.EDU service is provisioned for you.   That account may be revoked at any time at the discretion of The Ohio State University.
+<h2>Usage responsibilities</h2>
+<strong>Important:</strong> U.OSU.EDU is a resource for creating a professional site.  By creating a site, you agree that you are solely responsible for the content you create. Neither the content of your site, nor the links to other web sites, are screened, approved, reviewed or endorsed by The Ohio State University. The text and other material on your site are the opinion of the specific author and are not statements of advice, opinion, or information of The Ohio State University. Aliases can be revoked if they do not follow University standards.  U.OSU.EDU is not acceptable for any institutional data classified as “restricted”(with the exception of FERPA).
+
+<strong>You agree to:</strong>
+<ul>
+	<li>Understand the <a href="http://datamgmt.iu.edu/classifications.shtml">classifications of institutional data</a> and maintain the appropriate safeguards to protect the information. See<a href="http://datamgmt.iu.edu/policies.shtml">Institutional Data</a> Policy.</li>
+	<li>Understand the policy provides guidance for establishing responsibilities and limitations associated with the use of university computing resources.  See <a href="https://ocio.osu.edu/assets/Policies/Responsible-Use-of-University-Computing-and-Network-Resources-Policy.pdf">Responsible Use of University Computing and Network Resources</a>.</li>
+	<li>Use the U.OSU.EDU Service appropriately and responsibly as noted above.</li>
+	<li>Periodically review your security and sharing settings, ensuring that university information is shared only with intended audiences. Adhere to established university-wide and departmental policies and guidelines.</li>
+	<li>Understand that eligibility to use the U.OSU.EDU Service is based on current affiliation with the university.</li>
+	<li>Indemnify, and save and hold harmless the Ohio State University, its Board of Trustees, officers, agents, and employees (collectively “OSU”) from and against any and all claims, demands, actions, or causes of actions and costs of any nature or character, including attorney fees, arising from your acts or omissions in connection with your use of the Service, or your failure to comply with these terms and conditions, except where the claims, demands, actions, or causes of actions are solely the result of the gross negligence or wanton misconduct of OSU.</li>
+	<li>OSU shall not be liable for any delay or failure to carry or make timely Services available form any reason, including without limitation restrictions of law or regulations, labor disputes, acts of God, acts of terrorism or war, telecommunications, network or power failures or interruptions, or mechanical or electronic breakdowns.</li>
+	<li>This Agreement shall be governed by, construed, and enforced in accordance with, the laws of the State of Ohio.</li>
+</ul>
+<h2>Sanctions</h2>
+Failure to comply with OSU information and IT policies may result in sanctions relating to the individual’s use of IT resources (such as suspension or termination of access, or removal of online material); to the individual’s employment (up to and including immediate termination of employment); to the individual’s studies within the university (such as student discipline in accordance with applicable university policy); civil or criminal liability; or any combination of these. See Institutional Data Policy.
+<h2>Assent</h2>
+Use of the U.OSU.EDU service indicates acceptance of these terms.';

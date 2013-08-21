@@ -12,11 +12,11 @@
 	</div>
 	<div id="main">
 		<?php echo $agreement_text; ?>
-		<form method="post">
+		<form id="agreement_form" method="post">
 			<?php wp_nonce_field( 'osu_terms_of_service_agreement' ); ?>
 			
 			<label for="osu_terms_of_service_agreement">
-			<input type="checkbox" name="osu_terms_of_service[agree]">
+			<input type="checkbox" id="osu_terms_of_service_agreement" name="osu_terms_of_service[agree]">
 			I agree to the Terms of Service.</label>
 			
 			<?php submit_button( 'Submit' ); ?>

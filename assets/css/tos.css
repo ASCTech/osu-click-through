@@ -5,6 +5,7 @@
 
 body {
 	font-family: 'proximanova',arial,helvetica,sans-serif;
+	font-size: 100%;
 	background-color: #F2F3ED;
 	margin: 0;
 	padding: 0;
@@ -18,4 +19,17 @@ body {
 #header {
 	background: transparent url('../img/osu-logo.png') no-repeat center center;
 	height: 150px;
+}
+
+#agreement_form {
+	margin-top: 40px;
+}
+
+label {
+	font-weight: bold;
+}
+
+.button {
+	font-size: 1.25em; /* 1/16 * 20pt = 1.25em */
+	padding: 0.5em;
 }
