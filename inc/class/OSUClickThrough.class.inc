@@ -58,7 +58,7 @@ class OSUClickThrough {
 	}
 	
 	public function admin_process_post() {
-		if ( isset( $_POST['osu_click_through_options'] ) ) {
+		if ( isset( $_POST['osu_click_through_options'] ) && current_user_can( 'manage_network_options' ) ) {
 			check_admin_referer( 'osu_click_through_options' );
 		
 			if ( isset( $_POST['osu_click_through_options']['agreement_text'] ) ) {
@@ -93,7 +93,11 @@ class OSUClickThrough {
 		}
 	}
 	
-	public function options_page() {		
+	public function options_page() {
+		// check for appropriate access
+		if ( ! current_user_can( 'manage_network_options' ) )
+			wp_die( __( 'You do not have permission to access this page.' ) );
+		
 		// get options
 		$options = get_site_option( 'osu_click_through_options' );
 		$agreement_text = $options['agreement_text'];
