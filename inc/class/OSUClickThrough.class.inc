@@ -23,7 +23,7 @@ class OSUClickThrough {
 			// options do not yet exist, create options
 			
 			// grab default agreement text (hacky at the moment)
-			include( WP_CONTENT_DIR . "/mu-plugins/osu-click-through/inc/misc/default-agreement-text.inc" );
+			include( OSU_CLICK_THROUGH_DIR . "/inc/misc/default-agreement-text.inc" );
 			
 			$options = array(
 				'agreement_text' => $default_agreement_text,
@@ -44,10 +44,10 @@ class OSUClickThrough {
 			$options = get_site_option( 'osu_click_through_options' );
 			$agreement_text = $options['agreement_text'];
 			
-			$tos_css = WP_CONTENT_URL . '/mu-plugins/osu-click-through/assets/css/tos.css';
+			$tos_css = OSU_CLICK_THROUGH_URL . '/assets/css/tos.css';
 			
 			// render form
-			include( WP_CONTENT_DIR . '/mu-plugins/osu-click-through/inc/view/click-through-agreement.view.inc' );
+			include( OSU_CLICK_THROUGH_DIR . '/inc/view/click-through-agreement.view.inc' );
 		
 			exit();
 		}
@@ -84,7 +84,7 @@ class OSUClickThrough {
 			if ( isset( $_POST['osu_terms_of_service']['agree'] ) ) {
 				$current_user = wp_get_current_user();
 				
-				update_user_meta( $current_user->ID, 'osu_click_through_agreement', '1' );
+				update_user_meta( $current_user->ID, 'osu_click_through_agreement', date( 'Y-m-d H:i:s' ) );
 				
 				$wp_http_referer = $_POST['_wp_http_referer'];
 				wp_redirect( $wp_http_referer );

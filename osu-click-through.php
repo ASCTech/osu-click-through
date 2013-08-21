@@ -25,6 +25,11 @@ Author URI: http://u.osu.edu
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+// constants
+define( 'OSU_CLICK_THROUGH_BASENAME', basename( dirname(__FILE__) ) );
+define( 'OSU_CLICK_THROUGH_DIR', dirname(__FILE__) );
+define( 'OSU_CLICK_THROUGH_URL', WPMU_PLUGIN_URL . '/' . OSU_CLICK_THROUGH_BASENAME );
+
 // activate plugin
 if ( !class_exists('OSUClickThrough') ) {
 	require( 'inc/class/OSUClickThrough.class.inc' );
