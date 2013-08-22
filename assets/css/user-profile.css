@@ -1,0 +1,17 @@
+/**
+ * user-profile.css
+ * 	styles for the profile.php admin page
+ */
+
+.osu-click-through-agreement-date {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.osu-terms-of-service {
+	border-radius: 5px;
+	border: solid 1px #CCC;
+	padding: 20px;
+	margin: 20px 0;
+	background-color: #EEE;
+}
