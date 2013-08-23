@@ -11,7 +11,7 @@ class OSUClickThrough {
 			add_action( 'admin_init', array( $this, 'admin_process_post' ) );
 			add_action( 'admin_init', array( $this, 'check_user_agreement' ) );	
 			add_action( 'network_admin_menu', array( $this, 'add_menus' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_js' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_scripts' ) );
 			add_action( 'wp_dashboard_setup', array( $this, 'add_dashboard_widgets' ) );
 		}
 		add_action( 'muplugins_loaded', array( $this, 'create_options' ) );
@@ -204,7 +204,7 @@ class OSUClickThrough {
 		echo $agreement_text;
 	}
 	
-	function add_admin_js( $hook ) {
+	function add_admin_scripts( $hook ) {
 		if( 
 			$hook == 'profile.php' ||
 			$hook == 'user-edit.php'
@@ -212,6 +212,7 @@ class OSUClickThrough {
 			wp_enqueue_script( 'osu-click-through-user-profile-js', OSU_CLICK_THROUGH_URL . '/assets/js/user-profile.js', array( 'jquery' ) );
 			wp_enqueue_style( 'osu-click-through-user-profile-css', OSU_CLICK_THROUGH_URL . '/assets/css/user-profile.css' );
 		}
+		wp_enqueue_style( 'osu-click-through-dashboard-widget-css', OSU_CLICK_THROUGH_URL . '/assets/css/dashboard-widget.css' );
 	}
 	
 	/**

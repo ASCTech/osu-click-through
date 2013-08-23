@@ -1,0 +1,21 @@
+/**
+ * dashboard-widget.css
+ * 	styles for the dashboard widget
+ */
+
+#osu_click_through_tos_dashboard_widget ul
+{
+	list-style-type: disc;
+}
+
+#osu_click_through_tos_dashboard_widget ul,
+#osu_click_through_tos_dashboard_widget ol,
+#osu_click_through_tos_dashboard_widget blockquote
+{
+	margin: 1em auto;
+	width: 75%;
+}
+
+#osu_click_through_tos_dashboard_widget blockquote {
+	font-style: italic;
+}
