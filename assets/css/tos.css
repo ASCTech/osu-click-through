@@ -124,6 +124,10 @@ em {
 	font-style: italic;
 }
 
+a:link {
+	color: #BB0000;
+}
+
 ul, ol {
 	width: 75%;
 	margin: 2em auto;
