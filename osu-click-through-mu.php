@@ -4,7 +4,7 @@ Plugin Name: OSU Click Through Agreement
 Plugin URI: http://u.osu.edu
 Description: Forbids blog access until click through agreement is logged in usermeta
 Version: 1.0
-Author: The Ohio State University
+Author: Joe Bondra
 Author URI: http://u.osu.edu
 */
 
