@@ -22,17 +22,41 @@
 	<tr valign="top">
 		<th scope="row"><label for="agreement_text"><?php _e( 'Agreement Text' ) ?></label></th>
 		<td>
-		<?php
-			wp_editor(
-				$agreement_text,
-				'agreementtext',
-				array(
-					'textarea_name' => 'osu_click_through_options[agreement_text]',
-					'media_buttons' => FALSE,
-					'teeny' => TRUE,
-				)
-			);
-		?>
+			<?php
+				wp_editor(
+					$agreement_text,
+					'agreementtext',
+					array(
+						'textarea_name' => 'osu_click_through_options[agreement_text]',
+						'media_buttons' => FALSE,
+					)
+				);
+			?>
+			This is the main text for the Terms of Service.
+		</td>
+	</tr>
+	<tr valign="top">
+		<th scope="row"><label for="additional_message">Additional Message</label></th>
+		<td>
+			<?php
+				wp_editor(
+					$additional_message,
+					'additional_message',
+					array(
+						'textarea_name' => 'osu_click_through_options[additional_message]',
+						'media_buttons' => FALSE,
+					)
+				);
+			?>
+			This message displays above the Agreement Text. Use it for any special notes (e.g. special circumstances for re-issuing the agreement, etc.)
+		</td>
+	</tr>
+	<tr valign="top">
+		<th scope="row"><label for="display_additional_message">Display Additional Message?</label></th>
+		<td>
+			<input type="checkbox" name="osu_click_through_options[display_additional_message]" <?php checked( $display_additional_message, 1 ); ?> />
+			<br />
+			Toggle whether or not to show the Additional message.
 		</td>
 	</tr>
 	</table>

@@ -31,6 +31,8 @@ class OSUClickThrough {
 			
 			$options = array(
 				'agreement_text' => $default_agreement_text,
+				'additional_message' => '',
+				'display_additional_message' => 0,
 			);
 			
 			add_site_option( 'osu_click_through_options', $options );
@@ -46,7 +48,9 @@ class OSUClickThrough {
 		if ($user_has_agreed === '' ) {
 			// no value exists for user agreement need to display form before proceeding to WordPress
 			$options = get_site_option( 'osu_click_through_options' );
-			$agreement_text = wpautop( $options['agreement_text'] );
+			$agreement_text = wpautop( wp_kses_stripslashes( $options['agreement_text'] ) );
+			$additional_message = wp_kses_stripslashes( $options['additional_message'] );
+			$display_additional_message = wp_kses_stripslashes( $options['display_additional_message'] );
 			
 			$tos_css = OSU_CLICK_THROUGH_URL . '/assets/css/tos.css';
 			
@@ -65,18 +69,26 @@ class OSUClickThrough {
 		if ( isset( $_POST['osu_click_through_options'] ) && current_user_can( 'manage_network_options' ) ) {
 			check_admin_referer( 'osu_click_through_options' );
 		
+			$new_options = array();
+			$current_options = get_site_option( 'osu_click_through_options' );
+		
 			if ( isset( $_POST['osu_click_through_options']['agreement_text'] ) ) {
-				$agreement_text = wp_kses( 
-					$_POST['osu_click_through_options']['agreement_text'],
-					wp_kses_allowed_html( 'post' )
-				);
+				$agreement_text = wp_kses_post( $_POST['osu_click_through_options']['agreement_text'] );
 				
-				$options = array(
-					'agreement_text' => $agreement_text, 
-				);
-				
-				update_site_option( 'osu_click_through_options', $options );
+				$new_options['agreement_text'] = $agreement_text;
 			}
+			
+			if ( isset( $_POST['osu_click_through_options']['additional_message'] ) ) {
+				$additional_message = wp_kses_post( $_POST['osu_click_through_options']['additional_message'] );
+				
+				$new_options['additional_message'] = $additional_message;
+			}
+			
+			$new_options['display_additional_message'] = isset( $_POST['osu_click_through_options']['display_additional_message'] ) ? 1 : 0;
+			
+			$options = array_merge( $current_options, $new_options );
+			
+			update_site_option( 'osu_click_through_options', $options );
 			
 			$query_args = array(
 				'updated' => 'true',
@@ -155,7 +167,7 @@ class OSUClickThrough {
 			
 		// get variables
 		$options = get_site_option( 'osu_click_through_options' );
-		$agreement_text = wpautop( $options['agreement_text'] );
+		$agreement_text = wpautop( wp_kses_stripslashes( $options['agreement_text'] ) );
 		
 		// will need to drive any headings down a notch...
 		$agreement_text = OSUClickThrough::move_headings_down( $agreement_text, 2 );
@@ -188,7 +200,9 @@ class OSUClickThrough {
 		
 		// get options
 		$options = get_site_option( 'osu_click_through_options' );
-		$agreement_text = $options['agreement_text'];
+		$agreement_text = wp_kses_stripslashes( $options['agreement_text'] );
+		$additional_message = wp_kses_stripslashes( $options['additional_message'] );
+		$display_additional_message = wp_kses_stripslashes( $options['display_additional_message'] );
 		
 		// render page
 		include( OSU_CLICK_THROUGH_DIR . '/inc/view/options-page.view.inc' );
@@ -202,7 +216,7 @@ class OSUClickThrough {
 	function tos_dashboard_widget() {
 		// get agreement text
 		$options = get_site_option( 'osu_click_through_options' );
-		$agreement_text = wpautop( $options['agreement_text'] );
+		$agreement_text = wpautop( wp_kses_stripslashes( $options['agreement_text'] ) );
 		
 		// will need to drive any headings down a notch... widget headings are h3
 		$agreement_text = OSUClickThrough::move_headings_down( $agreement_text, 4 );

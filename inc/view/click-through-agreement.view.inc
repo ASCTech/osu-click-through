@@ -11,6 +11,9 @@
 		
 	</div>
 	<div id="main" role="main">
+		<?php if ( $display_additional_message ) : ?>
+		<div id="additional_message" class="updated"><?php echo $additional_message; ?></div>
+		<?php endif; ?>
 		<?php echo $agreement_text; ?>
 		<form id="agreement_form" method="post">
 			<?php wp_nonce_field( 'osu_terms_of_service_agreement' ); ?>
