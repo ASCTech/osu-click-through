@@ -10,7 +10,7 @@
 	<div id="header">
 		
 	</div>
-	<div id="main">
+	<div id="main" role="main">
 		<?php echo $agreement_text; ?>
 		<form id="agreement_form" method="post">
 			<?php wp_nonce_field( 'osu_terms_of_service_agreement' ); ?>
