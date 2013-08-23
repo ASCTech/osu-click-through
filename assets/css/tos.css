@@ -78,7 +78,7 @@ a img {
 
 body {
 	font-family: 'proximanova',arial,helvetica,sans-serif;
-	font-size: 1.2em; /* 1/16 * 12pt = 0.75 */
+	font-size: 1.4em; /* 1/16 * 12pt = 0.75 */
 	line-height: 1.75em;
 	background-color: #F2F3ED;
 	margin: 0;
@@ -92,27 +92,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 2.9167em; /* 1/12 * 35px = 2.9167em */
+	font-size: 2.5em; /* 1/14 * 35px = 2.5em */
 }
 
 h2 {
-	font-size: 2.334em; /* 1/12 * 28px = 2.334em */
+	font-size: 2em; /* 1/14 * 28px = 2em */
 }
 
 h3 {
-	font-size: 1.667em; /* 1/12 * 20px = 1.667em */
+	font-size: 1.429em; /* 1/14 * 20px = 1.429em */
 }
 
 h4 {
-	font-size: 1.5em; /* 1/12 * 18px = 1.5em */
+	font-size: 1.286em; /* 1/14 * 18px = 1.286em */
 }
 
 h5 {
-	font-size: 1.333em; /* 1/12 * 16px = 1.333em */
+	font-size: 1.143em; /* 1/14 * 16px = 1.143em */
 }
 
 h6 {
-	font-size: 1.167em; /* 1/12 * 14px = 1.167em */
+	font-size: 1em; /* 1/14 * 14px = 1em */
+	font-weight: bold;
 }
 
 strong {
