@@ -12,6 +12,7 @@ class OSUClickThrough {
 			add_action( 'admin_init', array( $this, 'check_user_agreement' ) );	
 			add_action( 'network_admin_menu', array( $this, 'add_menus' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'add_admin_js' ) );
+			add_action( 'wp_dashboard_setup', array( $this, 'add_dashboard_widgets' ) );
 		}
 		add_action( 'muplugins_loaded', array( $this, 'create_options' ) );
 		add_action( 'show_user_profile', array( $this, 'add_agreement_info_to_user_profile' ) );
@@ -92,9 +93,15 @@ class OSUClickThrough {
 			if ( isset( $_POST['osu_terms_of_service']['agree'] ) ) {
 				$current_user = wp_get_current_user();
 				
+				// store agreement date in UTC
+				$default_timezone = date_default_timezone_get();
+				date_default_timezone_set( 'UTC' );
+				
 				$agreement_info = array(
 					'date' => date( 'Y-m-d H:i:s' ),
 				);
+				
+				date_default_timezone_set( $default_timezone );
 				
 				update_user_meta( $current_user->ID, 'osu_click_through_agreement', $agreement_info );
 				
@@ -104,7 +111,7 @@ class OSUClickThrough {
 			}
 		}
 
-		if ( isset( $_POST['osu_click_through_purge_tos_records'] ) ) {
+		if ( isset( $_POST['osu_click_through_purge_tos_records'] ) && current_user_can( 'manage_network_options' ) ) {
 			check_admin_referer( 'osu_click_through_purge_tos_records' );
 			
 			$query_args = array(
@@ -117,7 +124,7 @@ class OSUClickThrough {
 			
 		}
 		
-		if ( isset( $_POST['osu_click_through_purge_tos_records_confirm'] ) ) {
+		if ( isset( $_POST['osu_click_through_purge_tos_records_confirm'] ) && current_user_can( 'manage_network_options' ) ) {
 			check_admin_referer( 'osu_click_through_purge_tos_records_confirm' );
 			
 			// delete all Terms of Service agreement records from wp_usermeta
@@ -155,7 +162,13 @@ class OSUClickThrough {
 		
 		// If the meta value does not exist and $single is true the function will return an empty string.
 		if ( !( $agreement_info === '' ) ) {
+			// agreement date is stored as UTC
+			$default_timezone = date_default_timezone_get();
+			date_default_timezone_set( 'UTC' );
+			
 			$agreement_date = date( 'F j, Y g:i:s a (e)', strtotime( $agreement_info['date'] ) );
+			
+			date_default_timezone_set( $default_timezone );
 		}
 		
 		// render info
@@ -178,6 +191,18 @@ class OSUClickThrough {
 		include( OSU_CLICK_THROUGH_DIR . '/inc/view/options-page.view.inc' );
 		
 	} // end options_page
+	
+	function add_dashboard_widgets() {
+		wp_add_dashboard_widget( 'osu_click_through_tos_dashboard_widget', 'U.OSU Terms of Service', array( $this, 'tos_dashboard_widget' ) );
+	}
+	
+	function tos_dashboard_widget() {
+		// get agreement text
+		$options = get_site_option( 'osu_click_through_options' );
+		$agreement_text = $options['agreement_text'];
+		
+		echo $agreement_text;
+	}
 	
 	function add_admin_js( $hook ) {
 		if( 

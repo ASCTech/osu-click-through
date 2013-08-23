@@ -3,21 +3,152 @@
  * 	styles for the terms of service click-through agreement
  */
 
+/* =Reset
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	border: 0;
+	font-family: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+html {
+	font-size: 62.5%; /* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
+	overflow-y: scroll; /* Keeps page centred in all browsers regardless of content height */
+	-webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+	-ms-text-size-adjust: 100%; /* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+}
+body {
+	background: #fff;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+nav,
+section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+table { /* tables still need 'cellspacing="0"' in the markup */
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	font-weight: normal;
+	text-align: left;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+a:focus {
+	outline: thin dotted;
+}
+a:hover,
+a:active { /* Improves readability when focused and also mouse hovered in all browsers people.opera.com/patrickl/experiments/keyboard/test */
+	outline: 0;
+}
+a img {
+	border: 0;
+}
+
+/* =Global
+---------------------------------------------------------------*/
+
 body {
 	font-family: 'proximanova',arial,helvetica,sans-serif;
-	font-size: 100%;
+	font-size: 1.2em; /* 1/16 * 12pt = 0.75 */
+	line-height: 1.75em;
 	background-color: #F2F3ED;
 	margin: 0;
 	padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
+	line-height: 1.25em;
 	font-weight: 400;
 	margin: 1.5em 0 0.3em 0;
 }
 
+h1 {
+	font-size: 2.9167em; /* 1/12 * 35px = 2.9167em */
+}
+
+h2 {
+	font-size: 2.334em; /* 1/12 * 28px = 2.334em */
+}
+
+h3 {
+	font-size: 1.667em; /* 1/12 * 20px = 1.667em */
+}
+
+h4 {
+	font-size: 1.5em; /* 1/12 * 18px = 1.5em */
+}
+
+h5 {
+	font-size: 1.333em; /* 1/12 * 16px = 1.333em */
+}
+
+h6 {
+	font-size: 1.167em; /* 1/12 * 14px = 1.167em */
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+ul, ol {
+	width: 75%;
+	margin: 2em auto;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+li {
+	margin: 0 0 1em 0
+}
+
+blockquote {
+	width: 75%;
+	margin: 2em auto;
+	font-style: italic;
+}
+
 #page {
 	width: 70%;
+	max-width: 940px;
 	margin: 0 auto;
 }
 
@@ -37,4 +168,5 @@ label {
 .button {
 	font-size: 1.25em; /* 1/16 * 20pt = 1.25em */
 	padding: 0.5em;
+	margin-top: 0.5em;
 }
