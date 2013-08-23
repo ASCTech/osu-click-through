@@ -46,7 +46,7 @@ class OSUClickThrough {
 		if ($user_has_agreed === '' ) {
 			// no value exists for user agreement need to display form before proceeding to WordPress
 			$options = get_site_option( 'osu_click_through_options' );
-			$agreement_text = $options['agreement_text'];
+			$agreement_text = wpautop( $options['agreement_text'] );
 			
 			$tos_css = OSU_CLICK_THROUGH_URL . '/assets/css/tos.css';
 			
@@ -155,7 +155,10 @@ class OSUClickThrough {
 			
 		// get variables
 		$options = get_site_option( 'osu_click_through_options' );
-		$agreement_text = $options['agreement_text'];
+		$agreement_text = wpautop( $options['agreement_text'] );
+		
+		// will need to drive any headings down a notch...
+		$agreement_text = OSUClickThrough::move_headings_down( $agreement_text, 2 );
 		
 		$agreement_info = get_user_meta( $profileuser->ID, 'osu_click_through_agreement', true );
 		$agreement_date = false;
@@ -199,7 +202,10 @@ class OSUClickThrough {
 	function tos_dashboard_widget() {
 		// get agreement text
 		$options = get_site_option( 'osu_click_through_options' );
-		$agreement_text = $options['agreement_text'];
+		$agreement_text = wpautop( $options['agreement_text'] );
+		
+		// will need to drive any headings down a notch... widget headings are h3
+		$agreement_text = OSUClickThrough::move_headings_down( $agreement_text, 4 );
 		
 		echo $agreement_text;
 	}
@@ -213,6 +219,28 @@ class OSUClickThrough {
 			wp_enqueue_style( 'osu-click-through-user-profile-css', OSU_CLICK_THROUGH_URL . '/assets/css/user-profile.css' );
 		}
 		wp_enqueue_style( 'osu-click-through-dashboard-widget-css', OSU_CLICK_THROUGH_URL . '/assets/css/dashboard-widget.css' );
+	}
+	
+	
+	/**
+	 * move_headings_down
+	 * 	a convenience function to display terms of service html headings in context (for valid markup)
+	 */
+	private function move_headings_down( $html_str, $highest_level = 2 ) {
+		if ( $highest_level > 6 ) {
+			$highest_level = 6;
+		}
+		
+		for( $i = 1; $i <= $highest_level - 1; $i++ ) {
+			for( $j = 5; $j >= 1; $j-- )
+			{
+				$new_level = $j + 1;
+				$html_str = str_replace( "<h{$j}>", "<h{$new_level}>", $html_str );
+				$html_str = str_replace( "</h{$j}>", "</h{$new_level}>", $html_str );
+			}
+		}
+
+		return $html_str;
 	}
 	
 	/**

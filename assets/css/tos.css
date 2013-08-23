@@ -130,7 +130,7 @@ a:link {
 
 ul, ol {
 	width: 75%;
-	margin: 2em auto;
+	margin: 0.75em auto;
 }
 
 ul {
@@ -149,6 +149,10 @@ blockquote {
 	width: 75%;
 	margin: 2em auto;
 	font-style: italic;
+}
+
+p {
+	margin: 0.75em 0 1.5em 0;
 }
 
 #page {
