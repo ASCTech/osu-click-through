@@ -213,17 +213,6 @@ label {
 	}
 }
 
-@media all and (-webkit-min-device-pixel-ratio: 2) and (max-width: 575px),
-all and (-moz-min-device-pixel-ratio: 1.5) and (max-width: 575px),
-all and (min-device-pixel-ratio: 2) and (max-width: 575px),
-all and (-o-min-device-pixel-ratio: 2/1)  and (max-width: 575px)
-{
-	#header {
-		background: transparent url('../img/osu-logo-vert-centered@2x.png') no-repeat center center;
-		background-size: 175px 130px;
-	}
-}
-
 @media all and (-webkit-min-device-pixel-ratio: 2),
 all and (-moz-min-device-pixel-ratio: 1.5),
 all and (min-device-pixel-ratio: 2),
@@ -232,5 +221,16 @@ all and (-o-min-device-pixel-ratio: 2/1)
 	#header {
 		background: transparent url('../img/osu-logo@2x.png') no-repeat left center;
 		background-size: 400px 58px;
+	}
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 2) and (max-width: 575px),
+all and (-moz-min-device-pixel-ratio: 1.5) and (max-width: 575px),
+all and (min-device-pixel-ratio: 2) and (max-width: 575px),
+all and (-o-min-device-pixel-ratio: 2/1)  and (max-width: 575px)
+{
+	#header {
+		background: transparent url('../img/osu-logo-vert-centered@2x.png') no-repeat center center;
+		background-size: 175px 130px;
 	}
 }
