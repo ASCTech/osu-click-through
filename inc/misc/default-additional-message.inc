@@ -1,0 +1,2 @@
+<?php
+$default_additional_message = 'With the transition from a \"test\" to \"live\" version of U.OSU.EDU,<strong> individuals who have created pages prior to 8/27/13 will need to re-accept the terms of use</strong>.  These terms have not changed.  This acceptance simply allows us to date stamp your acceptance as we go live with the new system.  If you have questions, email us at <a href="mailto:u@osu.edu">u@osu.edu</a>.';

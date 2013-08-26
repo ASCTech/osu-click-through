@@ -29,10 +29,13 @@ class OSUClickThrough {
 			// grab default agreement text (hacky at the moment)
 			include( OSU_CLICK_THROUGH_DIR . "/inc/misc/default-agreement-text.inc" );
 			
+			// grab default additional message (also, hacky at the moment)
+			include( OSU_CLICK_THROUGH_DIR . "/inc/misc/default-additional-message.inc" );
+			
 			$options = array(
 				'agreement_text' => $default_agreement_text,
-				'additional_message' => '',
-				'display_additional_message' => 0,
+				'additional_message' => $default_additional_message,
+				'display_additional_message' => 1,
 			);
 			
 			add_site_option( 'osu_click_through_options', $options );
