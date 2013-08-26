@@ -162,8 +162,9 @@ p {
 }
 
 #header {
-	background: transparent url('../img/osu-logo.png') no-repeat center center;
-	height: 150px;
+	background: transparent url('../img/osu-logo.png') no-repeat left center;
+	height: 60px;
+	margin: 50px 0 20px 0;
 }
 
 #agreement_form {
@@ -193,4 +194,43 @@ label {
 	border-radius: 3px 3px 3px 3px;
     border-style: solid;
     border-width: 1px;
+}
+
+/* =Responsive
+-------------------------------------------------------------*/
+@media screen and (max-width: 575px) {
+	body {
+		font-size: 1.2em;
+	}
+	
+	label {
+		font-size: 0.917em; /* 1/12 * 11pt = 0.917em */
+	}
+	
+	#header {
+		background: transparent url('../img/osu-logo-vert-centered.png') no-repeat center center;
+		height: 130px;
+	}
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 2) and (max-width: 575px),
+all and (-moz-min-device-pixel-ratio: 1.5) and (max-width: 575px),
+all and (min-device-pixel-ratio: 2) and (max-width: 575px),
+all and (-o-min-device-pixel-ratio: 2/1)  and (max-width: 575px)
+{
+	#header {
+		background: transparent url('../img/osu-logo-vert-centered@2x.png') no-repeat center center;
+		background-size: 175px 130px;
+	}
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 2),
+all and (-moz-min-device-pixel-ratio: 1.5),
+all and (min-device-pixel-ratio: 2),
+all and (-o-min-device-pixel-ratio: 2/1)
+{
+	#header {
+		background: transparent url('../img/osu-logo@2x.png') no-repeat left center;
+		background-size: 400px 58px;
+	}
 }
